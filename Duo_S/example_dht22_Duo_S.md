@@ -1,19 +1,19 @@
 ---
-sys: RuyiSDK
-sys_ver: 0.46.0
-sys_var: Debian
+sys: debian
+sys_ver: v1.6.35
+sys_var: null
 provider: milkv
-status: PASS
+status: peripheral
 last_update: 2026-04-17
 model: Milk-V Duo S
-profile: dht22
+profile: Dht22
 ---
 
 # RuyiSDK 外设示例
 
-### 安装 ruyi
+可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 
-#### 安装依赖包
+安装依赖包
 
 ```
 
@@ -21,19 +21,19 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essent
 
 ```
 
-#### 安装 ruyi 包管理器
+安装 ruyi 包管理器
 
 ```
 
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.46.0/ruyi-0.46.0.riscv64
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.riscv64
 
-chmod +x ruyi-0.46.0.riscv64
+chmod +x ruyi-0.47.0.riscv64
 
-sudo cp -v ruyi-0.46.0.riscv64 /usr/local/bin/ruyi
+sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
 
 ```
 
-#### 安装工具链
+安装工具链
 
 ```
 
@@ -43,7 +43,7 @@ ruyi install gnu-plct llvm-plct
 
 ```
 
-## DHT22 温湿度传感器测试
+## Dht22 
 
 本文介绍如何使用 RuyiSDK 在 Milk-V Duo S 开发板上快速部署编译环境，构建 DHT22 温湿度传感器测试程序，验证传感器数据读取功能。
 
@@ -65,11 +65,11 @@ ruyi install gnu-plct llvm-plct
 
 请参考以下引脚对照表及图片将模块连接至 Duo S。
 
-[![dht22 引脚图](https://github.com/ZihanCheng63/my-repo/blob/main/image.png)](https://github.com/ZihanCheng63/my-repo/blob/main/image.png)
+[![dht22 引脚图](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/dht22.png)](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/dht22.png)
 
-  
 
-[![duos-pinout-v1.1](https://raw.githubusercontent.com/jason-hue/riscv-board-custom-dev/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/jason-hue/plct/main/duos-pinout-v1.1.webp)
+
+[![duos-pinout-v1.1](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)
 
 
 
@@ -86,9 +86,9 @@ ruyi install gnu-plct llvm-plct
 
 
 
-![接线图 1](https://github.com/ZihanCheng63/my-repo/blob/main/image-2026041701.png)
+![接线图 1](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/image-2026041701.png)
 
-![接线图 2](https://github.com/ZihanCheng63/my-repo/blob/main/image-2026041702.png)
+![接线图 2](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/image-2026041702.png)
 
 ### 3. 获取源码
 
@@ -96,7 +96,9 @@ ruyi install gnu-plct llvm-plct
 
 ```bash
 
-git clone https://github.com/milkv-duo/duo-examples.git
+ruyi extract milkv-duo-examples
+
+mv milkv-duo-examples-* duo-examples 
 
 cd duo-examples
 
